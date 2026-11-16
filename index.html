@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#090b10">
+  <meta name="description" content="My Personal AI — your private everyday companion for planning, notes and ideas.">
+  <title>My Personal AI</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <style>
+    :root{color-scheme:dark;--bg:#090b10;--panel:#11151d;--panel2:#171d27;--line:#28313e;--text:#f1f4f8;--muted:#9aa6b6;--silver:#c6d0dc;--accent:#aebdce;--good:#a8c7b5}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 75% -10%,#263344 0,transparent 38%),var(--bg);color:var(--text);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}
+    button,input,textarea{font:inherit}button{cursor:pointer}.shell{max-width:1120px;margin:auto;padding:22px 18px 90px}.top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:28px}.brand{display:flex;align-items:center;gap:12px}.brand img{width:44px;height:44px}.brand strong{display:block;font-size:17px;letter-spacing:.04em}.brand span{color:var(--muted);font-size:12px}.actions{display:flex;gap:8px}.btn{border:1px solid var(--line);background:#151b25;color:var(--text);padding:10px 13px;border-radius:12px}.btn.primary{background:linear-gradient(135deg,#d5dde7,#8999ad);color:#10151d;border:0;font-weight:700}.hero{padding:28px;border:1px solid #303b49;border-radius:24px;background:linear-gradient(130deg,rgba(39,51,67,.9),rgba(16,21,29,.96) 58%);box-shadow:0 18px 60px #0005}.eyebrow{color:#b8c7d8;text-transform:uppercase;letter-spacing:.18em;font-size:10px;font-weight:700}.hero h1{font-size:clamp(28px,5vw,44px);line-height:1.1;margin:12px 0}.hero p{color:#b1bdcb;max-width:620px;margin:0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:18px}.tile{border:1px solid var(--line);background:linear-gradient(160deg,#151b25,#10141b);border-radius:18px;padding:20px;min-height:150px;text-align:left;color:var(--text);transition:.2s}.tile:hover{border-color:#718197;transform:translateY(-2px)}.tile .ico{font-size:23px}.tile h2{font-size:17px;margin:12px 0 4px}.tile p{margin:0;color:var(--muted);font-size:13px}.section{margin-top:24px}.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}.section-head h2{font-size:16px;margin:0}.muted{color:var(--muted)}.panel{border:1px solid var(--line);background:var(--panel);border-radius:18px;padding:18px}.notice{border-left:3px solid #91a5bb;padding:10px 13px;background:#151c26;border-radius:8px;color:#bac6d4;font-size:13px}.notes textarea{width:100%;min-height:100px;resize:vertical;background:#0c1017;border:1px solid var(--line);border-radius:12px;color:var(--text);padding:12px;outline:none}.notes textarea:focus{border-color:#8da0b6}.row{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.status{font-size:11px;color:var(--good)}.footer{text-align:center;color:#697687;font-size:11px;margin-top:28px}.hidden{display:none!important}.view{margin-top:20px}.view h2{margin-top:0}.back{margin-bottom:14px}.field{width:100%;background:#0c1017;border:1px solid var(--line);border-radius:11px;color:var(--text);padding:12px}.nav{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.nav button{font-size:12px}.list{padding-left:20px;color:#c4ced9}.list li{margin:8px 0}
+    @media(min-width:700px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}.hero{padding:38px}.tile{min-height:170px}}@media(max-width:420px){.shell{padding:16px 13px 70px}.hero{padding:22px}.actions .btn{padding:9px 10px}.grid{gap:10px}.tile{padding:15px;min-height:145px}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="top">
+      <div class="brand"><img src="./icon.svg" alt=""><div><strong>MY PERSONAL AI</strong><span id="tagline">Your space. Your pace.</span></div></div>
+      <div class="actions"><button class="btn" id="langBtn" type="button">اردو</button><button class="btn" id="installBtn" type="button" hidden>Install</button></div>
+    </header>
+    <section id="home">
+      <div class="hero"><div class="eyebrow" id="eyebrow">PERSONAL WORKSPACE</div><h1 id="welcome">A smarter space for your everyday life.</h1><p id="intro">Keep your ideas, plans and personal notes together in one calm, private workspace.</p></div>
+      <div class="grid">
+        <button class="tile" data-view="assistant"><span class="ico">✦</span><h2 id="tAssistant">AI Assistant</h2><p id="dAssistant">Ask, explore and organise your thoughts.</p></button>
+        <button class="tile" data-view="planner"><span class="ico">◷</span><h2 id="tPlanner">My Planner</h2><p id="dPlanner">Plan your day, study and goals.</p></button>
+        <button class="tile" data-view="wardrobe"><span class="ico">◇</span><h2 id="tWardrobe">Style & Wardrobe</h2><p id="dWardrobe">Keep outfit ideas and style notes.</p></button>
+        <button class="tile" data-view="notes"><span class="ico">▤</span><h2 id="tNotes">Quick Notes</h2><p id="dNotes">Save useful thoughts on this device.</p></button>
+      </div>
+      <section class="section"><div class="section-head"><h2 id="quickTitle">A note from your workspace</h2><span class="status" id="localStatus">● Saved on this device</span></div><div class="notice" id="privacyNote">Your notes stay in this browser on this device. The AI service is not connected yet.</div></section>
+    </section>
+    <section id="detail" class="view hidden">
+      <button class="btn back" id="backBtn">← <span id="backText">Back</span></button>
+      <div class="panel" id="detailContent"></div>
+    </section>
+    <div class="footer">MY PERSONAL AI · PRIVATE WORKSPACE · VERSION 1.0</div>
+  </main>
+<script>
+const copy={
+en:{tag:"Your space. Your pace.",ey:"PERSONAL WORKSPACE",welcome:"A smarter space for your everyday life.",intro:"Keep your ideas, plans and personal notes together in one calm, private workspace.",assistant:"AI Assistant",dAssistant:"Ask, explore and organise your thoughts.",planner:"My Planner",dPlanner:"Plan your day, study and goals.",wardrobe:"Style & Wardrobe",dWardrobe:"Keep outfit ideas and style notes.",notes:"Quick Notes",dNotes:"Save useful thoughts on this device.",quick:"A note from your workspace",privacy:"Your notes stay in this browser on this device. The AI service is not connected yet.",back:"Back",pending:"AI connection not set up yet",pendingText:"This app interface is ready, but live AI replies need a secure server and an AI provider key. No API key is stored in this app.",plannerTitle:"My Planner",plannerText:"Use this space to organise your priorities. Your checklist is saved on this device.",wardrobeTitle:"Style & Wardrobe",wardrobeText:"Save outfit combinations, colour ideas and tailoring notes. Keep it personal and practical.",notesTitle:"Quick Notes",save:"Save note",saved:"Saved on this device",task:"Add a task",add:"Add",placeholder:"Write your note here...",taskPlaceholder:"What would you like to do?",lang:"اردو"},
+ur:{tag:"آپ کی جگہ، آپ کی رفتار۔",ey:"ذاتی ورک اسپیس",welcome:"روزمرہ زندگی کے لیے ایک بہتر جگہ۔",intro:"اپنے خیالات، منصوبے اور ذاتی نوٹس ایک ہی محفوظ جگہ پر رکھیں۔",assistant:"اے آئی اسسٹنٹ",dAssistant:"سوال کریں اور اپنے خیالات منظم کریں۔",planner:"میرا پلانر",dPlanner:"اپنے دن، پڑھائی اور اہداف کی منصوبہ بندی کریں۔",wardrobe:"اسٹائل اور وارڈروب",dWardrobe:"لباس کے آئیڈیاز اور اسٹائل نوٹس محفوظ کریں۔",notes:"فوری نوٹس",dNotes:"اپنے خیالات اسی ڈیوائس پر محفوظ کریں۔",quick:"آپ کے ورک اسپیس کا نوٹ",privacy:"آپ کے نوٹس اسی ڈیوائس کے براؤزر میں محفوظ رہتے ہیں۔ اے آئی سروس ابھی منسلک نہیں ہے۔",back:"واپس",pending:"اے آئی کنکشن ابھی سیٹ اپ نہیں ہوا",pendingText:"ایپ کا انٹرفیس تیار ہے، لیکن اے آئی کے حقیقی جوابات کے لیے محفوظ سرور اور اے آئی فراہم کنندہ کی کلید درکار ہے۔ اس ایپ میں کوئی API کلید محفوظ نہیں ہے۔",plannerTitle:"میرا پلانر",plannerText:"اپنی ترجیحات منظم کریں۔ آپ کی چیک لسٹ اسی ڈیوائس پر محفوظ ہوگی۔",wardrobeTitle:"اسٹائل اور وارڈروب",wardrobeText:"لباس کے امتزاج، رنگوں اور سلائی کے ڈیزائن کے نوٹس محفوظ کریں۔",notesTitle:"فوری نوٹس",save:"نوٹ محفوظ کریں",saved:"اسی ڈیوائس پر محفوظ ہوگیا",task:"ایک کام شامل کریں",add:"شامل کریں",placeholder:"اپنا نوٹ یہاں لکھیں...",taskPlaceholder:"آپ کیا کرنا چاہتے ہیں؟",lang:"English"}
+};
+let language=localStorage.getItem("mpai-lang")||"en";
+function applyLanguage(){const c=copy[language];document.documentElement.lang=language;document.documentElement.dir=language==="ur"?"rtl":"ltr";for(const [id,key] of Object.entries({tagline:"tagline",eyebrow:"ey",welcome:"welcome",intro:"intro",tAssistant:"assistant",dAssistant:"dAssistant",tPlanner:"planner",dPlanner:"dPlanner",tWardrobe:"wardrobe",dWardrobe:"dWardrobe",tNotes:"notes",dNotes:"dNotes",quickTitle:"quick",privacyNote:"privacy",backText:"back"})){document.getElementById(id).textContent=c[key]}document.getElementById("langBtn").textContent=c.lang}
+function openView(name){const c=copy[language],home=document.getElementById("home"),detail=document.getElementById("detail"),content=document.getElementById("detailContent");home.classList.add("hidden");detail.classList.remove("hidden");let html="";
+if(name==="assistant")html='<h2>'+c.assistant+'</h2><p>'+c.pending+'</p><div class="notice">'+c.pendingText+'</div>';
+if(name==="planner")html='<h2>'+c.plannerTitle+'</h2><p class="muted">'+c.plannerText+'</p><div class="row"><input class="field" id="taskInput" placeholder="'+c.taskPlaceholder+'" style="flex:1;min-width:180px"><button class="btn primary" id="addTask">'+c.add+'</button></div><ul class="list" id="taskList"></ul>';
+if(name==="wardrobe")html='<h2>'+c.wardrobeTitle+'</h2><p class="muted">'+c.wardrobeText+'</p><textarea class="field" id="wardrobeText" placeholder="'+c.placeholder+'">'+(localStorage.getItem("mpai-wardrobe")||"")+'</textarea><button class="btn primary" id="saveWardrobe">'+c.save+'</button>';
+if(name==="notes")html='<h2>'+c.notesTitle+'</h2><textarea id="noteText" placeholder="'+c.placeholder+'">'+(localStorage.getItem("mpai-note")||"")+'</textarea><div class="row" style="margin-top:10px"><button class="btn primary" id="saveNote">'+c.save+'</button><span class="status" id="noteStatus"></span></div>';
+content.innerHTML=html;
+if(name==="notes")document.getElementById("saveNote").onclick=()=>{localStorage.setItem("mpai-note",document.getElementById("noteText").value);document.getElementById("noteStatus").textContent=c.saved};
+if(name==="wardrobe")document.getElementById("saveWardrobe").onclick=()=>{localStorage.setItem("mpai-wardrobe",document.getElementById("wardrobeText").value);};
+if(name==="planner"){let tasks=JSON.parse(localStorage.getItem("mpai-tasks")||"[]");const render=()=>{document.getElementById("taskList").innerHTML=tasks.map((t,i)=>'<li>'+escapeHtml(t)+' <button class="btn" data-del="'+i+'">×</button></li>').join("");document.querySelectorAll("[data-del]").forEach(b=>b.onclick=()=>{tasks.splice(+b.dataset.del,1);localStorage.setItem("mpai-tasks",JSON.stringify(tasks));render()})};document.getElementById("addTask").onclick=()=>{const v=document.getElementById("taskInput").value.trim();if(v){tasks.push(v);localStorage.setItem("mpai-tasks",JSON.stringify(tasks));document.getElementById("taskInput").value="";render()}};render()}
+}
+function escapeHtml(s){return s.replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]))}
+document.querySelectorAll("[data-view]").forEach(b=>b.addEventListener("click",()=>openView(b.dataset.view)));
+document.getElementById("backBtn").onclick=()=>{document.getElementById("detail").classList.add("hidden");document.getElementById("home").classList.remove("hidden")};
+document.getElementById("langBtn").onclick=()=>{language=language==="en"?"ur":"en";localStorage.setItem("mpai-lang",language);applyLanguage();if(!document.getElementById("detail").classList.contains("hidden"))document.getElementById("backBtn").click()};
+applyLanguage();
+let installPrompt;window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;const b=document.getElementById("installBtn");b.hidden=false;b.textContent=language==="ur"?"انسٹال کریں":"Install";b.onclick=async()=>{installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;b.hidden=true}});
+if("serviceWorker" in navigator && location.protocol.startsWith("http"))window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
+</script>
+</body>
+</html>
